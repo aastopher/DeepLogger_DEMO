@@ -1,5 +1,5 @@
 ### MODULE: Clasee responsible for creating dynamic loggers and configuring a CLI for verbose logging option
-import logging, os ,argparse, datetime
+import logging,os,argparse,datetime
 
 now = datetime.datetime.now()
 now = now.strftime("%Y-%m-%d_%H-%M-%S")
