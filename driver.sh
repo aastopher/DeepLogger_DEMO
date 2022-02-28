@@ -1,5 +1,5 @@
 #!/bin/bash
 
 source $pwd/env/bin/activate
-python3 main.py log
+sudo python3 main.py log -v
 deactivate
