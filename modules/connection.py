@@ -1,4 +1,4 @@
-from modules.DeepLogger import *
+from DeepLogger import DeepLogger
 
 # Instantiate loggers
 DL = DeepLogger('connection',['decrypt','socket','connect'])

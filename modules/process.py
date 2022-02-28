@@ -1,4 +1,5 @@
-from modules.DeepLogger import *
+from DeepLogger import DeepLogger
+import datetime
 
 # Instantiate loggers
 DL = DeepLogger('process',['query','logic','clean','export'])
