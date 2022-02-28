@@ -4,7 +4,7 @@ import logging,os,argparse,datetime
 now = datetime.datetime.now()
 now = now.strftime("%Y-%m-%d_%H-%M-%S")
 
-class EZLogger:
+class DeepLogger:
     def __init__(self,log_name,loggers):
         self.args,self.parser = self._cli_config()
         if not self.args.command:
@@ -45,7 +45,7 @@ class EZLogger:
         def _add_options(parser):
             parser.add_argument('-v', '--verbose', help='adds verbose logging to output logs', action='store_const', dest='log_level', const=logging.DEBUG, default=logging.INFO)
 
-        parser = argparse.ArgumentParser(description= f'EZ Logger and CLI')
+        parser = argparse.ArgumentParser(description= f'Deep Logger')
         subparser = parser.add_subparsers(dest='command', metavar= '<command>', help='valid choices: {log} options: {-v}')
 
         self.log_command = subparser.add_parser('log')

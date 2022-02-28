@@ -1,10 +1,10 @@
-from modules.EZLogger import *
+from modules.DeepLogger import *
 
 # Instantiate loggers
-EZ = EZLogger('connection',['decrypt','socket','connect'])
-decryptLogger = EZ.getLogger('decrypt')
-socketLogger = EZ.getLogger('socket')
-connectLogger = EZ.getLogger('connect')
+DL = DeepLogger('connection',['decrypt','socket','connect'])
+decryptLogger = DL.getLogger('decrypt')
+socketLogger = DL.getLogger('socket')
+connectLogger = DL.getLogger('connect')
 
 def connect():
     # PORT LOOKUP SERVICE
@@ -49,7 +49,7 @@ def connect():
         decryptLogger.info('SUCCESSFUL decryption')
     except Exception as e:
         decryptLogger.info(f'FAILED decryption: {e}')
-        EZ.console_logger.info(f'FAILED decryption: {e}')
+        DL.console_logger.info(f'FAILED decryption: {e}')
 
     # use sockets to discover IP of server
     try:
@@ -58,7 +58,7 @@ def connect():
         socketLogger.info('SUCCESSFUL ip discovery')
     except Exception as e:
         socketLogger.info(f'FAILED ip discovery: {e}')
-        EZ.console_logger.info(f'FAILED ip discovery: {e}')
+        DL.console_logger.info(f'FAILED ip discovery: {e}')
         quit()
     # establish socket connection to SQL browser service to discover tcp port of the named instance
     try:
@@ -68,7 +68,7 @@ def connect():
     except Exception as e:
         port = -1
         socketLogger.info(f'FAILED port discovery: {e}')
-        EZ.console_logger.info(f'FAILED port discovery: {e}')
+        DL.console_logger.info(f'FAILED port discovery: {e}')
         quit()
 
     # Attempt a connection to the server\instance
@@ -80,7 +80,7 @@ def connect():
     except Exception as e:
         connectLogger.info(f'FAILED connection to Database')
         connectLogger.debug(f'FAILED connection to DB: \'database\' via \'server\'\\\'instance_name\' using IP: \'server_ip\' and PORT: \'port\'')
-        EZ.console_logger.info(f'FAILED connection to Database')
+        DL.console_logger.info(f'FAILED connection to Database')
         quit()
 
 connect()

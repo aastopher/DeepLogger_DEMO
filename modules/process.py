@@ -1,11 +1,11 @@
-from modules.EZLogger import *
+from modules.DeepLogger import *
 
 # Instantiate loggers
-EZ = EZLogger('process',['query','logic','clean','export'])
-queryLogger = EZ.getLogger('query')
-logicLogger = EZ.getLogger('logic')
-cleanLogger = EZ.getLogger('clean')
-exportLogger = EZ.getLogger('export')
+DL = DeepLogger('process',['query','logic','clean','export'])
+queryLogger = DL.getLogger('query')
+logicLogger = DL.getLogger('logic')
+cleanLogger = DL.getLogger('clean')
+exportLogger = DL.getLogger('export')
 
 #Initialize date and version variables
 now = datetime.datetime.now()
@@ -28,7 +28,7 @@ def process():
         queryLogger.info('SUCCESSFUL query fetch')
     except Exception as e:
         queryLogger.info(f'FAILED query fetch: {e}')
-        EZ.console_logger.info(f'FAILED query fetch: {e}')
+        DL.console_logger.info(f'FAILED query fetch: {e}')
         quit()
 
     # PROCESS LOGIC
@@ -40,7 +40,7 @@ def process():
         logicLogger.debug('logic step 4')
     except Exception as e:
     	logicLogger.info(f'FAILED process logic: {e}')
-    	EZ.console_logger.info(f'FAILED process logic: {e}')
+    	DL.console_logger.info(f'FAILED process logic: {e}')
     	quit()
 
     # CLEAN UP
@@ -52,7 +52,7 @@ def process():
         cleanLogger.info('SUCCESSFUL clean up')
     except Exception as e:
     	cleanLogger.info(f'FAILED clean up: {e}')
-    	EZ.console_logger.info(f'FAILED clean up: {e}')
+    	DL.console_logger.info(f'FAILED clean up: {e}')
     	quit()
 
     # SET DIRECTORIES & EXPORT
@@ -63,7 +63,7 @@ def process():
         exportLogger.info('SUCCESSFUL network drive mount')
     except Exception as e:
     	exportLogger.info(f'FAILED network drive mount: {e}')
-    	EZ.console_logger.info(f'FAILED network drive mount: {e}')
+    	DL.console_logger.info(f'FAILED network drive mount: {e}')
     	quit()
     try:
         exportLogger.info('attempting to write file...')
@@ -71,14 +71,14 @@ def process():
         exportLogger.info('SUCCESSFUL file write')
     except Exception as e:
     	exportLogger.info(f'FAILED file write: {e}')
-    	EZ.console_logger.info(f'FAILED file write: {e}')
+    	DL.console_logger.info(f'FAILED file write: {e}')
     	quit()
 
 try:
     exportLogger.info('attempting process...')
     process()
     exportLogger.info('SUCCESSFUL process!')
-    EZ.console_logger.info(f'script ran SUCCESSFULLY! - {now}')
+    DL.console_logger.info(f'script ran SUCCESSFULLY! - {now}')
 except Exception as e:
 	exportLogger.info(f'FAILED process: {e}')
-	EZ.console_logger.info(f'script FAILED to run, please check logs - {now}')
+	DL.console_logger.info(f'script FAILED to run, please check logs - {now}')
