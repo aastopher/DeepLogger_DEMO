@@ -12,10 +12,10 @@ class EZLogger:
             self.log_name = log_name
             root = logging.getLogger()
             root.setLevel(logging.DEBUG)
-            self.info_logger = logging.getLogger(f'console_{self.log_name}')
+            self.console_logger = logging.getLogger(f'console_{self.log_name}')
             sh = logging.StreamHandler()
             sh.setLevel(logging.INFO)
-            self.info_logger.addHandler(sh)
+            self.console_logger.addHandler(sh)
         else:
             self.log_lvl = self.args.log_level
             self.loggers = loggers
@@ -35,10 +35,10 @@ class EZLogger:
         for log in self.loggers:
             logger = logging.getLogger(f'{log}')
             logger.addHandler(fh)
-        self.info_logger = logging.getLogger(f'console_{self.log_name}')
+        self.console_logger = logging.getLogger(f'console_{self.log_name}')
         sh = logging.StreamHandler()
         sh.setLevel(logging.INFO)
-        self.info_logger.addHandler(sh)
+        self.console_logger.addHandler(sh)
     def _cli_config(self):
         def _add_options(parser):
             parser.add_argument('-v', '--verbose', help='adds verbose logging to output logs', action='store_const', dest='log_level', const=logging.DEBUG, default=logging.INFO)
