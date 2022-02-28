@@ -2,9 +2,9 @@ from modules.EZLogger import *
 
 # Instantiate loggers
 EZ = EZLogger('connection',['decrypt','socket','connect'])
-decryptLogger = logging.getLogger('decrypt')
-socketLogger = logging.getLogger('socket')
-connectLogger = logging.getLogger('connect')
+decryptLogger = EZ.getLogger('decrypt')
+socketLogger = EZ.getLogger('socket')
+connectLogger = EZ.getLogger('connect')
 
 def connect():
     # PORT LOOKUP SERVICE

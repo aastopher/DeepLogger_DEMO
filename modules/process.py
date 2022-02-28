@@ -2,10 +2,10 @@ from modules.EZLogger import *
 
 # Instantiate loggers
 EZ = EZLogger('process',['query','logic','clean','export'])
-queryLogger = logging.getLogger('query')
-logicLogger = logging.getLogger('logic')
-cleanLogger = logging.getLogger('clean')
-exportLogger = logging.getLogger('export')
+queryLogger = EZ.getLogger('query')
+logicLogger = EZ.getLogger('logic')
+cleanLogger = EZ.getLogger('clean')
+exportLogger = EZ.getLogger('export')
 
 #Initialize date and version variables
 now = datetime.datetime.now()
